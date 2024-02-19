@@ -6,6 +6,15 @@ class Library:
     def __del__(self):
         self.file.close()
 
+    def book_adding(self):
+        name = input("Enter the name of the book: ")
+        author = input("Enter the author of the book: ")
+        release_date = input("Enter the release date of the book: ")
+        number_of_pages = input("Enter the number of pages: ")
+        book_info = name + "," + author + "," + release_date + "," + number_of_pages + "\n"
+        self.file.write(book_info)
+        print("Book added successfully.")        
+
     def books_listing(self):
         self.file.seek(0)
         lines = self.file.read().splitlines()
@@ -18,15 +27,6 @@ class Library:
             books.append(book_info)
         for book in books:
             print("Book: " + book[0] + ", Author: " + book[1])
-
-    def book_adding(self):
-        name = input("Enter the name of the book: ")
-        author = input("Enter the author of the book: ")
-        release_date = input("Enter the release date of the book: ")
-        number_of_pages = input("Enter the number of pages: ")
-        book_info = name + "," + author + "," + release_date + "," + number_of_pages + "\n"
-        self.file.write(book_info)
-        print("Book added successfully.")
 
     def book_remove(self):
         name = input("Enter the name of the book you want to remove: ")
@@ -41,6 +41,8 @@ class Library:
         for updated_line in updated_lines:
             self.file.write(updated_line)
         print("Book removed successfully.")
+
+ 
 
 lib = Library()
 
